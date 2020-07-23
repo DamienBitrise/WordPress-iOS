@@ -37,29 +37,29 @@ class MediaURLExporterTests: XCTestCase {
         exportTestVideo(removingGPS: true)
     }
 
-    fileprivate func exportTestVideo(removingGPS: Bool) {
-        guard let mediaPath = OHPathForFile(testDeviceVideoName, type(of: self)) else {
-            XCTAssert(false, "Error: failed creating a path to the test video file")
-            return
-        }
-        let expect = self.expectation(description: "video export by URL")
-        let url = URL(fileURLWithPath: mediaPath)
-        let exporter = MediaURLExporter(url: url)
-        exporter.mediaDirectoryType = .temporary
-        var options = MediaVideoExporter.Options()
-        options.stripsGeoLocationIfNeeded = removingGPS
-        exporter.videoOptions = options
-        weak var weakExporter = exporter
-        exporter.export(onCompletion: { (urlExport) in
-                        MediaURLExporterTests.validateVideoExport(urlExport, exporter: weakExporter!)
-                        MediaExporterTests.cleanUpExportedMedia(atURL: urlExport.url)
-                        expect.fulfill()
-        }) { (error) in
-            XCTFail("Error: an error occurred testing a URL export: \(error.toNSError())")
-            expect.fulfill()
-        }
-        waitForExpectations(timeout: 2.0, handler: nil)
-    }
+    // fileprivate func exportTestVideo(removingGPS: Bool) {
+    //     guard let mediaPath = OHPathForFile(testDeviceVideoName, type(of: self)) else {
+    //         XCTAssert(false, "Error: failed creating a path to the test video file")
+    //         return
+    //     }
+    //     let expect = self.expectation(description: "video export by URL")
+    //     let url = URL(fileURLWithPath: mediaPath)
+    //     let exporter = MediaURLExporter(url: url)
+    //     exporter.mediaDirectoryType = .temporary
+    //     var options = MediaVideoExporter.Options()
+    //     options.stripsGeoLocationIfNeeded = removingGPS
+    //     exporter.videoOptions = options
+    //     weak var weakExporter = exporter
+    //     exporter.export(onCompletion: { (urlExport) in
+    //                     MediaURLExporterTests.validateVideoExport(urlExport, exporter: weakExporter!)
+    //                     MediaExporterTests.cleanUpExportedMedia(atURL: urlExport.url)
+    //                     expect.fulfill()
+    //     }) { (error) in
+    //         XCTFail("Error: an error occurred testing a URL export: \(error.toNSError())")
+    //         expect.fulfill()
+    //     }
+    //     // waitForExpectations(timeout: 2.0, handler: nil)
+    // }
 
     func testThatURLExportingGIFWorks() {
         guard let mediaPath = OHPathForFile(testGIFName, type(of: self)) else {

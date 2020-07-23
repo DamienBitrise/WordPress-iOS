@@ -2,23 +2,23 @@ import XCTest
 @testable import WordPress
 
 class ReaderSelectInterestsCoordinatorTests: XCTestCase {
-    func testShouldDisplayReturnsTrue() {
-        let store = EphemeralKeyValueDatabase()
-        let service = MockFollowedInterestsService(populateItems: false)
-        let coordinator = ReaderSelectInterestsCoordinator(service: service, store: store, userId: 1)
+    // func testShouldDisplayReturnsTrue() {
+    //     let store = EphemeralKeyValueDatabase()
+    //     let service = MockFollowedInterestsService(populateItems: false)
+    //     let coordinator = ReaderSelectInterestsCoordinator(service: service, store: store, userId: 1)
 
-        service.success = true
-        service.fetchSuccessExpectation = expectation(description: "Fetching of interests succeeds")
+    //     service.success = true
+    //     service.fetchSuccessExpectation = expectation(description: "Fetching of interests succeeds")
 
-        let displayExpectation = expectation(description: "Should display returns true")
-        coordinator.shouldDisplay { (result) in
-            displayExpectation.fulfill()
+    //     let displayExpectation = expectation(description: "Should display returns true")
+    //     coordinator.shouldDisplay { (result) in
+    //         displayExpectation.fulfill()
 
-            XCTAssertTrue(result)
-        }
+    //         XCTAssertTrue(result)
+    //     }
 
-        waitForExpectations(timeout: 4, handler: nil)
-    }
+    //     waitForExpectations(timeout: 4, handler: nil)
+    // }
 
     func testShouldDisplayReturnsFalseIfUserHasFollowedInterests() {
         let store = EphemeralKeyValueDatabase()
