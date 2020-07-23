@@ -58,6 +58,6 @@ class AtomicAuthenticationServiceTests: XCTestCase {
             XCTFail("Can't get the requested auth cookie.")
         }
 
-        waitForExpectations(timeout: TimeInterval(0.1))
+        waitForExpectations(timeout: TimeInterval(1))
     }
 }
