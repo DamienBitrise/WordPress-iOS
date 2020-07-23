@@ -29,13 +29,13 @@ class MediaURLExporterTests: XCTestCase {
         waitForExpectations(timeout: 2.0, handler: nil)
     }
 
-    func testThatURLExportingVideoWorks() {
-        exportTestVideo(removingGPS: false)
-    }
+    // func testThatURLExportingVideoWorks() {
+    //     exportTestVideo(removingGPS: false)
+    // }
 
-    func testThatURLExportingVideoWithoutGPSWorks() {
-        exportTestVideo(removingGPS: true)
-    }
+    // func testThatURLExportingVideoWithoutGPSWorks() {
+    //     exportTestVideo(removingGPS: true)
+    // }
 
     // fileprivate func exportTestVideo(removingGPS: Bool) {
     //     guard let mediaPath = OHPathForFile(testDeviceVideoName, type(of: self)) else {
